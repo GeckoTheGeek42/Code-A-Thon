@@ -4,18 +4,6 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-function toggleShow(tag) {
-	console.log($(this));
-	console.log("WASSSUP")
-	tag.children(".details").show();
-	tag.attr("onClick", "toggleHide($(this))");
-}
-
-function toggleHide(tag) {
-	tag.children(".details").hide();
-	tag.attr("onClick", "toggleShow($(this))");
-}
-
 var main = (function($) { var _ = {
 
 	/**
@@ -465,10 +453,19 @@ var main = (function($) { var _ = {
 								$this.children().not($thumbnail)
 									.appendTo(s.$slideCaption);
 
-							s.$slideCaption.children(".details").hide();
+							var toggleShow = function() {
+								s.$slideCaption.children(".details").show();
+								s.$slideCaption.click(toggleHide);
+							};
+							var toggleHide = function() {
+								s.$slideCaption.children(".details").hide();
+								s.$slideCaption.click(toggleShow);
+							}
+							setTimeout( toggleHide, 5000 );
 
-							var onclk = "toggleShow($(this))";
-							s.$slideCaption.attr("onClick", onclk); 
+							// var animateHide = function() {
+
+							// }
 
 					// Preload?
 						if (_.settings.preload) {
