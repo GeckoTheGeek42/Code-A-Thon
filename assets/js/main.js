@@ -389,11 +389,32 @@ var main = (function($) { var _ = {
 	 */
 	initViewer: function() {
 
+		var toggleShow = function(tag) {
+			console.log("show");
+			tag.children(".details").show(500);
+			tag.unbind('click').click(function() { 
+				toggleHide(tag)
+			});
+		};
+		var toggleHide = function(tag) {
+			console.log("hide");
+			tag.children(".details").hide(500);
+			tag.unbind('click').click(function() { 
+				toggleShow(tag)
+			});
+		}
+
 		// Bind thumbnail click event.
 			_.$thumbnails
 				.on('click', '.thumbnail', function(event) {
 
 					var $this = $(this);
+
+					var $caption = _.slides[$this.data('index')].$slideCaption;
+					$caption.children('.details').show();
+					setTimeout(function() {
+						toggleHide($caption);
+					}, 2000)
 
 					// Stop other events.
 						event.preventDefault();
@@ -452,20 +473,6 @@ var main = (function($) { var _ = {
 							// Move everything *except* the thumbnail itself to the caption.
 								$this.children().not($thumbnail)
 									.appendTo(s.$slideCaption);
-
-							var toggleShow = function() {
-								s.$slideCaption.children(".details").show();
-								s.$slideCaption.click(toggleHide);
-							};
-							var toggleHide = function() {
-								s.$slideCaption.children(".details").hide();
-								s.$slideCaption.click(toggleShow);
-							}
-							setTimeout( toggleHide, 5000 );
-
-							// var animateHide = function() {
-
-							// }
 
 					// Preload?
 						if (_.settings.preload) {
