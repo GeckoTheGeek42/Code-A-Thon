@@ -4,6 +4,18 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+function toggleShow(tag) {
+	console.log($(this));
+	console.log("WASSSUP")
+	tag.children(".details").show();
+	tag.attr("onClick", "toggleHide($(this))");
+}
+
+function toggleHide(tag) {
+	tag.children(".details").hide();
+	tag.attr("onClick", "toggleShow($(this))");
+}
+
 var main = (function($) { var _ = {
 
 	/**
@@ -433,7 +445,7 @@ var main = (function($) { var _ = {
 					// Slide.
 
 						// Create elements.
-	 						s.$slide = $('<div class="slide"><div class="caption"></div><div class="frame"></div></div>');
+	 						s.$slide = $('<div class="slide"> <div class="caption"></div> <div class="frame"></div> </div>');
 
 	 					// Image.
  							s.$slideFrame = s.$slide.children('.frame');
@@ -452,6 +464,11 @@ var main = (function($) { var _ = {
 							// Move everything *except* the thumbnail itself to the caption.
 								$this.children().not($thumbnail)
 									.appendTo(s.$slideCaption);
+
+							s.$slideCaption.children(".details").hide();
+
+							var onclk = "toggleShow($(this))";
+							s.$slideCaption.attr("onClick", onclk); 
 
 					// Preload?
 						if (_.settings.preload) {

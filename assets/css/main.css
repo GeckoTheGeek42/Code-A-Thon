@@ -1098,6 +1098,10 @@
 				transition: 1s;
 			}
 
+				/*#viewer .slide .caption .details {
+					display: none;
+				}*/
+
 				#viewer .slide .caption h2, #viewer .slide .caption h3, #viewer .slide .caption h4, #viewer .slide .caption h5, #viewer .slide .caption h6 {
 					color: rgba(255, 77, 0, 0.6);
 					/*margin: 0;*/
