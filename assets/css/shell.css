@@ -45,6 +45,7 @@
   line-height: 1.6em;
   height: 50%;
   overflow: auto;
+  font-size: 1.5em;
  
   -webkit-border-bottom-right-radius: 3px;
   -webkit-border-bottom-left-radius: 3px;
@@ -52,6 +53,41 @@
   -moz-border-radius-bottomleft: 3px;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
+}
+
+/*.shell-submit {
+  position: relative;
+  top: -2.8em;
+  width: 58px;
+  left: calc(100% - 58px - 0.5em);
+
+  float: left;
+  width: 58px;
+  line-height: 2em;
+  text-align: center;
+  background: #141414;
+  color: #45D40C;
+  border: 1px solid #f9f9f9;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  font-size: 1.25em;
+}*/
+
+.shell-submit {
+  position: relative;
+  top: -2em;
+  width: 4.5em;
+  left: calc(100% - 4.5em - 0.5em);
+
+  text-align: center;
+  background: #141414;
+  color: #45D40C;
+
+  border: 1px solid #f9f9f9;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+
+  font-size: 1.5em;
 }
 
 .shell-body ::-webkit-scrollbar {

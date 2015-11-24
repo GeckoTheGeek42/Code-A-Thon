@@ -464,8 +464,8 @@ var main = (function($) { var _ = {
 		 							.css('background-image', '')
 		 							.css('background-position', ($thumbnail.data('position') || 'center'));
 								
-		 					var lvlIframe = $('<iframe scrolling="no" src="' + $levelFrame.attr('href') + '" />')
-							s.$slideFrame.append(lvlIframe);
+		 					var iFrame = $('<iframe />').attr("scrolling", "no").attr("src", $levelFrame.attr('href'));
+							s.$slideFrame.append(iFrame);
 
 						// Caption.
 							s.$slideCaption = s.$slide.find('.caption');
@@ -496,8 +496,8 @@ var main = (function($) { var _ = {
 						_.slides.push(s);
 
 					// Set thumbnail's index.
-						$thumbnail.data('index', _.slides.length - 1);
-
+						var idx = _.slides.length - 1;
+						$thumbnail.data('index', idx);
 				});
 
 	},
