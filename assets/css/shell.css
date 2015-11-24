@@ -1,7 +1,7 @@
 .shell-wrap {
-  width: 60%;
+  width: 90%;
   margin: 2.5% auto 0 auto;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  /*box-shadow: 0 0 10px rgba(0,0,0,0.4);*/
  
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -43,7 +43,7 @@
   color: #45D40C;
   font: 0.8em 'Andale Mono', Consolas, 'Courier New';
   line-height: 1.6em;
-  height: 40%;
+  height: 50%;
   overflow: auto;
  
   -webkit-border-bottom-right-radius: 3px;
@@ -58,17 +58,14 @@
       width: 5px;
 }
  
-.shell-body li:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-}
- 
 .shell-body li {
   word-wrap: break-word;
   position: relative;
-  padding: 0 0 0 15px;
+  padding: 0 0 0 0;
 }
 
-
+@media screen and (max-width: 480px) {
+  .shell-wrap {
+    width: 100%;
+  }
+}

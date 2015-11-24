@@ -149,8 +149,8 @@ var main = (function($) { var _ = {
 			_.$viewer = $(
 				'<div id="viewer">' +
 					'<div class="inner">' +
-						'<div class="nav-next"></div>' +
-						'<div class="nav-previous"></div>' +
+						// '<div class="nav-next"></div>' +
+						// '<div class="nav-previuothumbs"></div>' +
 						'<div class="toggle"></div>' +
 					'</div>' +
 				'</div>'
@@ -443,7 +443,7 @@ var main = (function($) { var _ = {
 		 							.css('background-image', '')
 		 							.css('background-position', ($thumbnail.data('position') || 'center'));
 								
-		 					var lvlIframe = $('<iframe src="' + $levelFrame.attr('href') + '" />')
+		 					var lvlIframe = $('<iframe scrolling="no" src="' + $levelFrame.attr('href') + '" />')
 							s.$slideFrame.append(lvlIframe);
 
 						// Caption.
