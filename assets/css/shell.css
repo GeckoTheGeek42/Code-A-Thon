@@ -76,7 +76,7 @@
 .shell-submit {
   position: relative;
   top: -2em;
-  width: 4.5em;
+  /*width: 4.5em;*/
   left: calc(100% - 4.5em - 0.5em);
 
   text-align: center;

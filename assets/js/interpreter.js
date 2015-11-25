@@ -1,7 +1,16 @@
+var printout = [];
+
 function submit() {
-	console.log($('#write').html());
 	var res = checkPairs($('#write').html(), input1s, input2s, outputs);
-	console.log(res);
+	var submit = $('.shell-submit')
+	if (res) {
+		submit.html("Done &#10003;");
+	} else {
+		submit.html("Wrong &#10060;");
+		setTimeout(function() {
+			submit.html("Submit");
+		}, 1000)
+	}
 }
 
 function check(text, inputs, outputs) {
@@ -14,7 +23,6 @@ function check(text, inputs, outputs) {
 }
 
 function checkPairs(text, input1s, input2s, outputs) {
-	console.log("called: " + input1s + " " + input2s + " " + outputs)
 	var results = [];
 	zip(input1s, input2s).forEach(function(e) {
 		input1 = e[0];	
@@ -22,6 +30,29 @@ function checkPairs(text, input1s, input2s, outputs) {
 		results.push( eval(text) );
 	});
 	return arraysEqual(results, outputs);
+}
+
+function checkPrint(text, inputs) {
+	var results = [];
+	inputs.forEach(function(e) {
+		input1 = e;	
+		results.push( eval(text) );
+	});
+	return arraysEqual(results, printout);
+}
+
+function checkPrintPairs(text, input1s, input2s) {
+	var results = [];
+	zip(input1s, input2s).forEach(function(e) {
+		input1 = e[0];	
+		input2 = e[1];	
+		results.push( eval(text) );
+	});
+	return arraysEqual(results, printout);
+}
+
+function println(text) {
+	printout.push(text);
 }
 
 function arraysEqual(a, b) {
