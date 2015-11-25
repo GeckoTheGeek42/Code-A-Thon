@@ -21,7 +21,8 @@ $(function() {
 
         if ($this.hasClass('delete')) {
             tokens.pop();
-            $write.html(stringify(tokens));
+            var text = stringify(tokens);
+            $write.html(text);
             return false;
         }
 
@@ -54,9 +55,9 @@ function stringify(arr) {
         console.log("empty")
         return "";
     } else {
-        arr.reduce(function(acc, elem, idx, arr) {
-            if (elem == "\n" || elem == "\t") return acc += elem;
-            return acc += " " + elem;
+        return arr.reduce(function(acc, elem, idx, arr) {
+            if (elem == "\n" || elem == "\t") return acc + elem;
+            return acc + " " + elem;
         })
     }
 }
