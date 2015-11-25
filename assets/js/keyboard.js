@@ -32,7 +32,7 @@ $(function() {
         if ($this.hasClass('tab')) character = "\t";
         if ($this.hasClass('return')) character = "\n";
 
-        if ($this.hasClass('digit') && isNumeric(tokens[tokens.length - 1])) {
+        if (($this.hasClass('digit') || $this.hasClass('semicolon')) && isNumeric(tokens[tokens.length - 1])) {
             tokens[tokens.length - 1] += character;
         } else {
             tokens.push(character);

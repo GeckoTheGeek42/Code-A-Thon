@@ -390,14 +390,12 @@ var main = (function($) { var _ = {
 	initViewer: function() {
 
 		var toggleShow = function(tag) {
-			console.log("show");
 			tag.children(".details").show(500);
 			tag.unbind('click').click(function() { 
 				toggleHide(tag)
 			});
 		};
 		var toggleHide = function(tag) {
-			console.log("hide");
 			tag.children(".details").hide(500);
 			tag.unbind('click').click(function() { 
 				toggleShow(tag)
@@ -458,11 +456,6 @@ var main = (function($) { var _ = {
 
 	 					// Image.
  							s.$slideFrame = s.$slide.children('.frame');
-
- 							// Set background stuff.
-	 							s.$slideFrame
-		 							.css('background-image', '')
-		 							.css('background-position', ($thumbnail.data('position') || 'center'));
 								
 		 					var iFrame = $('<iframe />').attr("scrolling", "no").attr("src", $levelFrame.attr('href'));
 							s.$slideFrame.append(iFrame);

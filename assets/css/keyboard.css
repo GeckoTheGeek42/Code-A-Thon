@@ -18,9 +18,16 @@ body {
 #board {
     width: 100%;
     height: 40%;
-    margin: -1em 0 0em 0em;
+    margin: -1em 0 0em -0.5em;
     /*margin: 0;*/
     overflow: auto;
+
+    background-color: #6C767C;
+    border-width: 5px;
+    border-style: ridge;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }
 
 #keyboard {
