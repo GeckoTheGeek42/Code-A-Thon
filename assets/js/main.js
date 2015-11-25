@@ -391,12 +391,14 @@ var main = (function($) { var _ = {
 
 		var toggleShow = function(tag) {
 			tag.children(".details").show(500);
+			tag.css("background-color", "#8A949A");
 			tag.unbind('click').click(function() { 
 				toggleHide(tag)
 			});
 		};
 		var toggleHide = function(tag) {
 			tag.children(".details").hide(500);
+			tag.css("background-color", "transparent");
 			tag.unbind('click').click(function() { 
 				toggleShow(tag)
 			});
