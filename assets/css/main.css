@@ -1095,7 +1095,7 @@
 				bottom: 0;
 				left: 0;
 				width: 100%;
-				color: rgba(255, 77, 0, 0.5);
+				color: #67C8FF;
 				z-index: 1;
 			}
 
@@ -1115,7 +1115,7 @@
 				}
 
 				#viewer .slide .caption h2, #viewer .slide .caption h3, #viewer .slide .caption h4, #viewer .slide .caption h5, #viewer .slide .caption h6 {
-					color: rgba(255, 77, 0, 0.6);
+					color: #67C8FF;
 					/*margin: 0;*/
 				}
 

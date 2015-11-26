@@ -1,16 +1,25 @@
 var printout = [];
 
+// document.domain = "codeathonapp";
+
 function submit() {
 	var res = checkPairs($('#write').html(), input1s, input2s, outputs);
-	var submit = $('.shell-submit')
+	var submit = $('.shell-submit');
 	if (res) {
 		submit.html("Done &#10003;");
+		parent.finished[lvl-1] = true;
+		parent.score += difficulty * 10;
+		var thumbnail = parent.$('.thumbnail.level' + lvl + " img");
+		var newpic = thumbnail.attr("src").slice(0, -4) + "-done.png";
+		thumbnail.attr("src", newpic);
+		parent.$('#header .score').html("Score: " + parent.score)
 	} else {
 		submit.html("Wrong &#10060;");
 		setTimeout(function() {
 			submit.html("Submit");
 		}, 1000)
 	}
+	return res;
 }
 
 function check(text, inputs, outputs) {
@@ -32,23 +41,27 @@ function checkPairs(text, input1s, input2s, outputs) {
 	return arraysEqual(results, outputs);
 }
 
-function checkPrint(text, inputs) {
+function checkPrint(text, inputs, outputs) {
 	var results = [];
 	inputs.forEach(function(e) {
 		input1 = e;	
-		results.push( eval(text) );
+		eval(text);
+		results.push( printout );
+		printout = [];
 	});
-	return arraysEqual(results, printout);
+	return arraysEqual(results, outputs);
 }
 
-function checkPrintPairs(text, input1s, input2s) {
+function checkPrintPairs(text, input1s, input2s, outputs) {
 	var results = [];
 	zip(input1s, input2s).forEach(function(e) {
 		input1 = e[0];	
-		input2 = e[1];	
-		results.push( eval(text) );
+		input2 = e[1];
+		eval(text);
+		results.push( printout );
+		printout = [];
 	});
-	return arraysEqual(results, printout);
+	return arraysEqual(results, outputs);
 }
 
 function println(text) {
