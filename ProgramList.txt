@@ -1,20 +1,20 @@
-Hello World                                                             1
-Addition/Subtraction  												1
-Multiplication/Division						1	
-Area of Circle					2
-Odd or Even						2
-Find the multiples										3
-Find the factorial									3
-Divisibility Check				3	
-nCr										3	
-Armstrong Number				3
-Palindrome							3
-Simple Interest							4	
-Compound Interest					4
-Show Quotient and Remainder			4
-Switch Int A and Int B								5
-Sum of an array						5
-Average of an array						5
-First 5 elements of the Fibonacci Series			6
+Hello World                                 1
+Addition/Subtraction  						1
+Multiplication/Division						1
+Area of Circle								2
+Odd or Even									2
+Find the multiples							3
+Find the factorial							3
+Divisibility Check							3
+nCr											3
+Check Armstrong Number						3
+Palindrome									3
+Simple Interest								4
+Compound Interest							4
+Show Quotient and Remainder					4
+Switch Int A and Int B						5
+Sum of an array								5
+Average of an array							5
+First 5 elements of the Fibonacci Series	6
 n Elements of the Fibonacci Series			6
-Triangle of Astrix	7
+Triangle of Astrix							7

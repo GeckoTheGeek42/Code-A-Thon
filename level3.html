@@ -11,8 +11,8 @@
 			<p class="shell-top-bar">Editor</p>
 			<ul class="shell-body">
 				<li contenteditable="true" id="write">
-				println(input1 + input2);
-				println(input1 - input2);
+				println(input1 * input2);
+				println(input1 / input2);
 				</li>
 			</ul>
 				<button class="shell-submit" type="submit" onclick="submit()">Submit</button>
@@ -102,9 +102,9 @@
 	<script type="text/javascript" src="assets/js/interpreter.js"></script>
 	<script type="text/javascript">
 		var input1s = [3, 4, 5, 6],
-			input2s = [1, 2, 3, 5],
-			outputs = [[4, 2], [6, 2], [8, 2], [11, 1]],
-			lvl = 2, difficulty = 1;
+			input2s = [1, 2, 3, 4],
+			outputs = [[3, 3], [8, 2], [15, 5/3], [24, 3/2]],
+			lvl = 3, difficulty = 1;
 		var checker = checkPrintPairs;
 	</script>
 </body>

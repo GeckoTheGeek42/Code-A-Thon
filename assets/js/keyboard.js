@@ -35,7 +35,7 @@ $(function() {
         if (($this.hasClass('digit') && isNumeric(tokens[tokens.length - 1]))) {
             tokens[tokens.length - 1] += character;
         } else if ($this.hasClass('semicolon') || $this.hasClass('quote')
-            || ($this.hasClass('paren') && tokens[tokens.length - 1] == "println")) {
+            || ($this.hasClass('paren') && (tokens[tokens.length - 1] == "println" || tokens[tokens.length - 1] == "\""))) {
             tokens.push(character);
         } else {
             tokens.push(character);
@@ -58,7 +58,7 @@ function stringify(arr) {
         console.log("empty")
         return "";
     } else {
-        return arr.reduce(function(acc, elem, idx, arr) {
+        return arr.reduce(function(acc, elem) {
             if (elem == "\n" || elem == "\t") return acc + elem;
             else if (elem == ";" || elem == "\"" || elem == "'" || elem == "(" || elem == ")" || elem == "println") {
                 

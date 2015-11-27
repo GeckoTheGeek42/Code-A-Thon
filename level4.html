@@ -10,10 +10,7 @@
 		<div class="shell-wrap">
 			<p class="shell-top-bar">Editor</p>
 			<ul class="shell-body">
-				<li contenteditable="true" id="write">
-				println(input1 + input2);
-				println(input1 - input2);
-				</li>
+				<li contenteditable="true" id="write"></li>
 			</ul>
 				<button class="shell-submit" type="submit" onclick="submit()">Submit</button>
 		</div>
@@ -101,11 +98,10 @@
 	<script type="text/javascript" src="assets/js/keyboard.js"></script>
 	<script type="text/javascript" src="assets/js/interpreter.js"></script>
 	<script type="text/javascript">
-		var input1s = [3, 4, 5, 6],
-			input2s = [1, 2, 3, 5],
-			outputs = [[4, 2], [6, 2], [8, 2], [11, 1]],
-			lvl = 2, difficulty = 1;
-		var checker = checkPrintPairs;
+		var inputs = [3, 4, 5, 6],
+			outputs = [3.14*3*3, 3.14*4*4, 3.14*5*5, 3.14*6*6],
+			lvl = 4, difficulty = 2;
+		var checker = check;
 	</script>
 </body>
 </html>

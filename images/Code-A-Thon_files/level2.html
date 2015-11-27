@@ -1,21 +1,20 @@
-<html lang="en">
-	<head>
+
+<!-- saved from url=(0033)http://localhost:8080/level2.html -->
+<html lang="en" hola_ext_inject="disabled"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="assets/css/shell.css">
-		<link rel="stylesheet" href="assets/css/keyboard.css">
+		<link rel="stylesheet" href="shell.css">
+		<link rel="stylesheet" href="keyboard.css">
 		<!-- <link rel="stylesheet" href="assets/css/nanoscroller.css"> -->
-		<link rel="stylesheet" type="text/css" href="assets/css/level.css">
-	</head>
+		<link rel="stylesheet" type="text/css" href="level.css">
+	<style>#header + #content > #left > #rlblock_left
+{display:none !important;}</style></head>
 	<body>
 		<div class="shell-wrap">
 			<p class="shell-top-bar">Editor</p>
 			<ul class="shell-body">
-				<li contenteditable="true" id="write">
-				println(input1 + input2);
-				println(input1 - input2);
-				</li>
+				<li contenteditable="true" id="write">input1 + input2</li>
 			</ul>
-				<button class="shell-submit" type="submit" onclick="submit()">Submit</button>
+			<button class="shell-submit" type="submit" onclick="submit(checkPairs)">Done ✓</button>
 		</div>
 		<div id="board" align="center">
 			<ul id="keyboard">
@@ -85,7 +84,7 @@
 					<li class="symbol semicolon">;</li>
 					<li class="symbol">=</li>
 					<li class="symbol quote">'</li>
-					<li class="symbol quote">&quot;</li>
+					<li class="symbol quote">"</li>
 					<li class="symbol">.</li>
 					<li class="symbol">,</li>
 				</div>
@@ -96,16 +95,15 @@
 				</div>
 			</ul>
 		</div>
-	</div>
-	<script type="text/javascript" src="assets/js/jquery.min.js"></script>
-	<script type="text/javascript" src="assets/js/keyboard.js"></script>
-	<script type="text/javascript" src="assets/js/interpreter.js"></script>
+	
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="keyboard.js"></script>
+	<script type="text/javascript" src="interpreter.js"></script>
 	<script type="text/javascript">
 		var input1s = [3, 4, 5, 6],
-			input2s = [1, 2, 3, 5],
-			outputs = [[4, 2], [6, 2], [8, 2], [11, 1]],
+			input2s = [1, 2, 3, 4],
+			outputs = [4, 6, 8, 10],
 			lvl = 2, difficulty = 1;
-		var checker = checkPrintPairs;
 	</script>
-</body>
-</html>
+
+</body></html>
