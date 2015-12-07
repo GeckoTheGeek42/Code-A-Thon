@@ -10,7 +10,8 @@
 		<div class="shell-wrap">
 			<p class="shell-top-bar">Editor</p>
 			<ul class="shell-body">
-				<li contenteditable="true" id="write">println("Hello World")</li>
+				<li contenteditable="true" id="write"></li>
+				<!-- <li contenteditable="true" id="write">println("Hello World")</li> -->
 			</ul>
 				<button class="shell-submit" type="submit" onclick="submit()">Submit</button>
 		</div>
@@ -101,8 +102,23 @@
 		var input1s = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 10, 10, 10, 10, 10, 10, 20, 20, 20, 20, 20, 20], //rate
 			input2s = [2, 3, 4, 5, 10, 20, 2, 3, 4, 5, 10, 20, 2, 3, 4, 5, 10, 20, 2, 3, 4, 5, 10, 20, 2, 3, 4, 5, 10, 20], //time
 			outputs = [], 
-			lvl = 1, difficulty = 1, 
-			checker = check;
+			lvl = 12, difficulty = 4, 
+			checker = checkFunc;
+
+			function checkFunc(text) {
+				return zip(input1s, input2s).reduce(function(acc, elem) {
+				    input1 = elem[0];
+				    input2 = elem[1];
+				    var res = eval("(function() { " + text + " })()");
+				    var expect = si(input1, input2);
+				    return acc && (res == expect);
+				}, true);
+			}
+
+			function si(r, t) {
+				p = 1000;
+				return p + p * r * t;
+			}
 	</script>
 </body>
 </html>

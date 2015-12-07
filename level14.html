@@ -102,11 +102,26 @@
 	<script type="text/javascript" src="assets/js/keyboard.js"></script>
 	<script type="text/javascript" src="assets/js/interpreter.js"></script>
 	<script type="text/javascript">
-		var input1s = [3, 4, 5, 6],
-			input2s = [1, 2, 3, 5],
-			outputs = [[4, 2], [6, 2], [8, 2], [11, 1]],
-			lvl = 2, difficulty = 1;
-		var checker = checkPrintPairs;
+		var input1s = [3, 3, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 14, 14, 14, 14, 30, 30, 30, 30, 30, 30, 30, 30, 30, 45, 45, 45, 45, 45, 45, 45, 45],
+			input2s = [2, 3, 2, 3, 4, 5, 2, 3, 4, 5, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 7, 8, 9, 11, 2, 3, 4, 5, 6, 7, 8, 9, 14, 2, 3, 4, 5, 6, 7, 8, 9, 30, 2, 3, 4, 5, 6, 7, 8, 9, 45],
+			outputs = [],
+			lvl = 14, difficulty = 4;
+		var checker = checkFunc;
+
+		function checkFunc(text) {
+			return zip(input1s, input2s).reduce(function(acc, elem) {
+			    input1 = elem[0];
+			    input2 = elem[1];
+			    eval("(function() { " + text + " })()");
+			    var res = printout;
+			    printout = [];
+			    return acc && arraysEqual(res, qr(input1, input2));
+			}, true);
+		}
+
+		function qr(a, b) {
+			return [a/b, a%b]
+		}
 	</script>
 </body>
 </html>

@@ -822,6 +822,11 @@
 
 		#header p {
 			color: rgba(249, 249, 249, 1.0);
+			font-size: 1em;
+		}
+
+		#header p.score {
+			font-weight: bold;
 		}
 
 /* Footer */

@@ -5,9 +5,11 @@ var printout = [];
 function submit() {
     var submit = $('.shell-submit');
     try {
-        var res = checker($('#write').html());
+        var code = $('#write').html().replace("<br>", "\n");
+        console.log(code);
+        var res = checker(code);
     } catch(e) {
-        console.log(e);
+        console.log("e" + e);
         if (e instanceof SyntaxError) {
             submit.html("Error &#10060;");
             setTimeout(function() {
@@ -43,7 +45,7 @@ function check(text) {
     var results = [];
     inputs.forEach(function(e) {
         input1 = e;
-        results.push(eval(text));
+        results.push(eval("(function() { " + text + " })()"));
     });
     return arraysEqual(results, outputs);
 }
@@ -53,7 +55,7 @@ function checkPairs(text) {
     zip(input1s, input2s).forEach(function(e) {
         input1 = e[0];
         input2 = e[1];
-        results.push(eval(text));
+        results.push(eval("(function() { " + text + " })()"));
     });
     return arraysEqual(results, outputs);
 }
@@ -62,7 +64,7 @@ function checkPrint(text) {
     var results = [];
     inputs.forEach(function(e) {
         input1 = e;
-        eval(text);
+        eval("(function() { " + text + " })()");
         results.push(printout);
         printout = [];
     });
@@ -74,7 +76,7 @@ function checkPrintPairs(text) {
     zip(input1s, input2s).forEach(function(e) {
         input1 = e[0];
         input2 = e[1];
-        eval(text);
+        eval("(function() { " + text + " })()");
         results.push(printout);
         printout = [];
     });

@@ -28,7 +28,9 @@ var main = (function($) {
             thumbnailsPerRow: 2,
 
             // Side of main wrapper (must match "misc.main-side" in _vars.scss).
-            mainSide: 'right'
+            mainSide: 'right',
+
+            unlockall: true,
 
         },
 
@@ -411,7 +413,7 @@ var main = (function($) {
 
                     var idx = $this.data('index')-1;
                     console.log(!finished[idx] + " - " + idx);
-                    if (!finished[idx] && idx >= 0) {
+                    if (!_.settings.unlockall && (!finished[idx] && idx >= 0)) {
                         console.log("boop");
                         $this.blur();
                         return false;

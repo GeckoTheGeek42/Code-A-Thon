@@ -102,11 +102,23 @@
 	<script type="text/javascript" src="assets/js/keyboard.js"></script>
 	<script type="text/javascript" src="assets/js/interpreter.js"></script>
 	<script type="text/javascript">
-		var input1s = [3, 4, 5, 6],
-			input2s = [1, 2, 3, 5],
-			outputs = [[4, 2], [6, 2], [8, 2], [11, 1]],
-			lvl = 2, difficulty = 1;
-		var checker = checkPrintPairs;
+		var input1s = [1, 2, 3, 4, 5, 6, 7, 8, 9],
+			input2s = [91, 81, 71, 61, 51, 41, 31, 21, 11],
+			outputs = [],
+			lvl = 15, difficulty = 5;
+		var checker = checkFunc;
+
+		function checkFunc(text) {
+			new Array(20).reduce(function(acc) {
+				var input1 = new Array(10).map(function() { Math.random() * 100 });
+			    var res = eval("(function() { " + text + " })()");
+			    return acc && (res == arrsum(input1));
+			}, true);
+		}
+
+		function arrsum(arr) {
+			return arr.reduce(function(acc, elem) { return acc + elem });
+		}
 	</script>
 </body>
 </html>

@@ -71,7 +71,7 @@
 					<li class="keyword">var</li>
 					<li class="keyword">for</li>
 					<li class="keyword">while</li>
-					<li class="keyword">function</li>
+					<li class="keyword">push</li>
 					<li class="keyword">input1</li>
 					<li class="keyword">input2</li>
 					<li class="keyword">return</li>
@@ -102,11 +102,24 @@
 	<script type="text/javascript" src="assets/js/keyboard.js"></script>
 	<script type="text/javascript" src="assets/js/interpreter.js"></script>
 	<script type="text/javascript">
-		var input1s = [3, 4, 5, 6],
-			input2s = [1, 2, 3, 5],
-			outputs = [[4, 2], [6, 2], [8, 2], [11, 1]],
-			lvl = 2, difficulty = 1;
-		var checker = checkPrintPairs;
+		var input1s = [0, 1, 1, 2, 5, 2, 5],
+			input2s = [1, 1, 0, 1, 1, 5, 6],
+			outputs = [],
+			lvl = 18, difficulty = 6;
+		var checker = checkFunc;
+
+		function checkFunc(text) {
+			return zip(input1s, input2s).reduce(function(acc, elem) {
+			    input1 = elem[0];
+			    input2 = elem[1];
+			    var res = eval("(function() { " + text + " })()");
+			    return acc && (arraysEqual(res, fib5(input1, input2)));
+			}, true);
+		}
+
+		function fib5(a, b) {
+			return [a, b, a+b, a+b+b, a+a+b+b+b];
+		}
 	</script>
 </body>
 </html>
