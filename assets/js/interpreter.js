@@ -3,16 +3,31 @@ var printout = [];
 // document.domain = "codeathonapp";
 
 function submit() {
-    var res = checker($('#write').html());
     var submit = $('.shell-submit');
+    try {
+        var res = checker($('#write').html());
+    } catch(e) {
+        console.log(e);
+        if (e instanceof SyntaxError) {
+            submit.html("Error &#10060;");
+            setTimeout(function() {
+                submit.html("Submit");
+            }, 1000)
+        }
+        return false;
+    }
     if (res) {
         submit.html("Done &#10003;");
         if (!parent.finished[lvl - 1]) {
             parent.finished[lvl - 1] = true;
             parent.score += difficulty * 10;
             var thumbnail = parent.$('.thumbnail.level' + lvl + " img");
-            var newpic = thumbnail.attr("src").slice(0, -4) + "-done.png";
-            thumbnail.attr("src", newpic);
+            var newpicdone = thumbnail.attr("src").slice(0, -4) + "-done.png";
+            var nxlvl = lvl + 1;
+            var thumbnail2 = parent.$('.thumbnail.level' + nxlvl + " img");
+            var newpicunlocked = thumbnail2.attr("src").slice(0, -11) + ".png";
+            thumbnail.attr("src", newpicdone);
+            thumbnail2.attr("src", newpicunlocked);
             parent.$('#header .score').html("Score: " + parent.score)
         }
     } else {
@@ -70,9 +85,13 @@ function println(text) {
     printout.push(text);
 }
 
+function print(text) {
+	printout[printout.length - 1] += text; 
+}
+
 function arraysEqual(a, b) {
-    console.log(a);
-    console.log(b);
+    console.log("a: " + a);
+    console.log("b: " + b);
 
     if (a === b) return true;
     if (a == null || b == null) return false;
@@ -84,8 +103,8 @@ function arraysEqual(a, b) {
     return true;
 }
 function metaArrayEquals(a, b) {
-    console.log(a);
-    console.log(b);
+    console.log("a: " + a);
+    console.log("b: " + b);
 
     if (a === b) return true;
     if (a == null || b == null) return false;

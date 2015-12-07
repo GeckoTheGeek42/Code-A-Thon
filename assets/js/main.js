@@ -409,6 +409,14 @@ var main = (function($) {
 
                     var $this = $(this);
 
+                    var idx = $this.data('index')-1;
+                    console.log(!finished[idx] + " - " + idx);
+                    if (!finished[idx] && idx >= 0) {
+                        console.log("boop");
+                        $this.blur();
+                        return false;
+                    }
+
                     var $caption = _.slides[$this.data('index')].$slideCaption;
                     $caption.children('.details').show();
                     setTimeout(function() {
@@ -420,8 +428,9 @@ var main = (function($) {
                     event.stopPropagation();
 
                     // Locked? Blur.
-                    if (_.locked)
+                    if ( _.locked) {
                         $this.blur();
+                    }
 
                     // Switch to this thumbnail's slide.
                     _.switchTo($this.data('index'));
@@ -496,8 +505,17 @@ var main = (function($) {
                     var img = $thumbnail.children('img');
                     if (_.firstLaunch) {
                         finished.push(false);
-                    } else if (finished[idx]) {
-                        img.attr("src", img.attr("src").slice(0, -4) + "-done.png");
+                        if (idx > 0) {
+                            img.attr("src", img.attr("src").slice(0, -4) + "-locked.png");
+                        }
+                    } else {
+                        var notdone = finished.indexOf(false);
+                        console.log("notdone: " + notdone);
+                        if (finished[idx]) {
+                            img.attr("src", img.attr("src").slice(0, -4) + "-done.png");
+                        } else if (idx > notdone) { 
+                            img.attr("src", img.attr("src").slice(0, -4) + "-locked.png");
+                        }
                     }
                 });
 
@@ -650,7 +668,6 @@ var main = (function($) {
                     }, 100);
 
                 }
-
                 // Otherwise ...
                 else {
 
@@ -667,6 +684,18 @@ var main = (function($) {
                     }, 100);
 
                 }
+
+                // var notdone = finished.indexOf(false);
+                // console.log("notdone: " + notdone);
+                // var imgs = $('#thumbnails article .thumbnail img');
+                // for (var i = 0; i < imgs.length; i++) {
+                //     var img = imgs[i];
+                //     if (finished[i]) {
+                //         img.attr("src", img.attr("src").slice(0, -4) + "-done.png");
+                //     } else if (i > notdone) { 
+                //         img.attr("src", img.attr("src").slice(0, -4) + "-locked.png");
+                //     }
+                // };
 
             };
 
@@ -820,3 +849,8 @@ var main = (function($) {
     return _;
 })(jQuery);
 main.init();
+
+function reset() {
+	localStorage.clear();
+    location.reload(true);
+}
