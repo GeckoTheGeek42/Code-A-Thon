@@ -116,6 +116,10 @@
 		color: #aaa;
 	}
 
+	.icon {
+		width: 80%;
+	}
+
 	body, input, select, textarea {
 		font-family: "Roboto", Helvetica, sans-serif;
 		font-weight: 400;
