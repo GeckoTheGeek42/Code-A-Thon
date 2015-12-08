@@ -12,11 +12,17 @@ function submit() {
         console.log("e" + e);
         if (e instanceof SyntaxError) {
             submit.html("Error &#10060;");
+            $("#popup div").html("<h2><img src=\"images/exclamation.png\" alt=\"\" height=\"24\" width=\"24\"> Syntax Error</h2><p>" + e + "</p>");
+            location.href = '#popup'
             setTimeout(function() {
                 submit.html("Submit");
             }, 1000)
+        } else {
+            throw(e);
         }
         return false;
+    } finally {
+        setTimeout(clearPrintout, 1000);
     }
     if (res) {
         submit.html("Done &#10003;");
@@ -64,9 +70,10 @@ function checkPrint(text) {
     var results = [];
     inputs.forEach(function(e) {
         input1 = e;
+        $('.printout').append("in: " + input1);
         eval("(function() { " + text + " })()");
         results.push(printout);
-        printout = [];
+        clearPrintout();
     });
     return metaArrayEquals(results, outputs);
 }
@@ -76,19 +83,34 @@ function checkPrintPairs(text) {
     zip(input1s, input2s).forEach(function(e) {
         input1 = e[0];
         input2 = e[1];
+        $('.printout').append("in: " + input1 + ", " + input2);
         eval("(function() { " + text + " })()");
         results.push(printout);
-        printout = [];
+        clearPrintout();
     });
+    console.log(results);
+    console.log(outputs);
     return metaArrayEquals(results, outputs);
 }
 
-function println(text) {
-    printout.push(text);
+function clearPrintout() {
+    printout = [];
+    setTimeout( function() { $('.printout').html("") }, 1000 );
+}
+
+function println(txt) {
+    printout.push(txt);
+    var text = String(txt)
+    if ($('printout').html() != "") {
+        $('.printout').append("<br>");
+    }
+    $('.printout').append(text.replace("\n", "<br>"));
+    console.log(printout);
 }
 
 function print(text) {
-	printout[printout.length - 1] += text; 
+	printout[printout.length - 1] += text;
+    $('.printout').append(text);
 }
 
 function arraysEqual(a, b) {
