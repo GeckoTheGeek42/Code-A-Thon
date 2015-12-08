@@ -30,7 +30,7 @@ var main = (function($) {
             // Side of main wrapper (must match "misc.main-side" in _vars.scss).
             mainSide: 'right',
 
-            unlockall: true,
+            unlockall: false,
 
         },
 
